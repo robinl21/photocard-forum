@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/form_check.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Koulen">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <form action='php/input_card.php' method='post' name="cardsubmission" onsubmit="return form_check()" enctype="multipart/form-data">  allows form data to be sent over -->
+        
+
+        <!-- initial question -->
+        Choose Which Group
+        <!-- upon selection, change_form changes form to fit either custom or existing group -->
+        <select onchange='change_form(this)'> <!-- this refers to select element since called by select element-->
+            <option value = 'Exist'>Input Card to Existing Group on Site</option>
+            <option value = 'Custom'>Input New Group onto Site</option>
+        </select>
+
+        <div id = "custom_group" style="display: none">
+            <form action='php/input_card.php' method='post' name="custom_card_submission" onsubmit="return form_check(true)" enctype = "multipart/form-data">
+            <!-- check if group already exists. if already exists, redirect to existing -->
+            Group Name: <input type="text" name="custom_group_name" required>
+            Artist Name: <input type="text" name="custom_artist_name" required>
+            Contact Info: <input type="text" name="custom_contact" required>
+
+            Image Link: <input type="text" name = "custom_image">
+
+            Image File: <input type="file" name = "custom_image_file">
+
+            Additional Details: <input type="text" name="custom_details">
+
+            <input type="submit" name="custom_submit"> <!-- only clicked submit button gets sent to php -->
+            </form>
+        </div>
+
+        <div id = "exist_group" style="display:block">
+
+            <form action='php/input_card.php' method='post' name="card_submission"  onsubmit="return form_check(false)" enctype = "multipart/form-data">
+            Group Name: <input type="text" name="group_name" required>
+
+            </select>
+
+            Artist Name: <input type="text" name = "artist_name" required>
+
+            </select>
+            
+
+            Contact Info: <input type="text" name="contact" required>
+
+            Image Link: <input type="text" name = "image">
+
+            Image File: <input type="file" name = "image_file">
+
+            Additional Details: <input type="text" name="details">
+
+            <input type="submit" name="submit"> 
+            </form>
+        </div>
+
+    <div id="log">
+        
+    </div>
+
+    <div id = "available cards">
+        
+    </div>
+
+    
+    <script src='js/input_form.js'></script>
+    
+</body>
+</html>
